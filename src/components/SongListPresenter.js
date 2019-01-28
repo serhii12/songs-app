@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectSong } from '../actions'
 import SongItem from './SongItem';
-
 
 export class SongListPresenter extends Component {
   renderList = () => {
-    const { songs } = this.props;
+    const { songs, selectSong } = this.props;
     return songs.map(song => {
       return (
-        <SongItem song={song} key={song.title} />
+        <SongItem selectSong={selectSong} song={song} key={song.title} />
       );
     });
   }
@@ -22,4 +22,7 @@ const mapStateToProps = state => ({
   songs: state.songs,
 });
 
-export default connect(mapStateToProps)(SongListPresenter);
+export default connect(
+  mapStateToProps,
+  { selectSong }
+)(SongListPresenter);

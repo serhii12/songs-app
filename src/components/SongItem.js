@@ -1,10 +1,13 @@
 import React from 'react'
 
-const SongItem = ({song}) => {
+const SongItem = ({ song, selectSong }) => {
   return (
     <div className="item">
       <div className="right floated content">
-        <button className="ui button primary">
+        <button
+          className="ui button primary"
+          onClick={() => selectSong(song)}
+        >
           Select
         </button>
       </div>
